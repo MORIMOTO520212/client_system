@@ -4,3 +4,6 @@
 - LoginDialog.java
 - ReservationControl.java
 - ReservationSystem.java
+
+### クラス図
+![](https://github.com/MORIMOTO520212/client_system/blob/master/classfigure.png?raw=true)
