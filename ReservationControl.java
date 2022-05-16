@@ -23,7 +23,7 @@ public class ReservationControl {
 	//// MySQLに接続するためのメソッド
 	private void connectDB () {
 		try {
-			Class.forName("org.git.mm.mysql.Driver"); // MySQLのドライバをLoadする
+			Class.forName("org.gjt.mm.mysql.Driver"); // MySQLのドライバをLoadする
 			// MySQLに接続
 			String url = "jdbc.mysql://localhost?useUnicode=true&characterEncoding=SJIS";
 			sqlCon = DriverManager.getConnection (url, sqlUserID, sqlPassword);
