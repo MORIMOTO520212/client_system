@@ -7,8 +7,10 @@ public class MainFrame extends Frame implements ActionListener, WindowListener{
 	ReservationControl reservationControl;
 
 	Panel	panelNorth;
+	Panel   panelNorthSub1;
+	Panel   panelNorthSub2;
 	Panel	panelCenter;
-
+	// ボタンインスタンスの生成
 	Button	buttonLog;
 
 	TextField	tfLoginID;

@@ -92,4 +92,22 @@ public class ReservationControl {
 		return res;
 	}
 
+	// 教室概要ボタン押下時の処理を行うメソッド
+	public String getFacilityExplanation(String facility_id) {
+		String res = "";
+		connectDB();
+		try {
+			String sql = "SELECT * from db_reservation.facility WHERE facility_id = '" + facility_id + "';";
+			ResultSet rs = sqlStmt.executeQuery(sql);
+			if(rs.next()) {
+				res = rs.getString("explanation");
+			 }else {
+				 res = "教室番号が違います。";
+			 }
+		 }catch(Exception e) {
+			 e.printStackTrace();
+		 }
+		 closeDB();
+		 return res;
+	 }
 }
