@@ -47,7 +47,7 @@ public class ReservationControl {
 		String res = "";
 		if(flagLogin) {
 			flagLogin = false;
-			frame.buttonLog.setLabel("ログイン");
+			frame.buttonLogin.setLabel("ログイン");
 			frame.tfLoginID.setText("未ログイン");
 		}else {
 
@@ -75,7 +75,7 @@ public class ReservationControl {
 					String password_from_db = rs.getString(password);
 					if (password_from_db.equals(password)) {
 						flagLogin = true;
-						frame.buttonLog.setLabel("ログアウト");
+						frame.buttonLogin.setLabel("ログアウト");
 						frame.tfLoginID.setText(reservationUserID);
 						res = "";
 					}else {

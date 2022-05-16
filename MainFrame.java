@@ -11,7 +11,7 @@ public class MainFrame extends Frame implements ActionListener, WindowListener{
 	Panel   panelNorthSub2;
 	Panel	panelCenter;
 	// ボタンインスタンスの生成
-	Button	buttonLog;
+	Button	buttonLogin;
 	Button  buttonExplanation;
 	// 選択ボックスのインスタンス生成
 	ChoiceFacility choiceFacility;
@@ -24,7 +24,8 @@ public class MainFrame extends Frame implements ActionListener, WindowListener{
 	public MainFrame(ReservationControl rc) {
 		reservationControl = rc;
 
-		buttonLog = new Button("ログイン");
+		/* ------------- 画面描画 --------------- */
+		buttonLogin = new Button("ログイン");
 		buttonExplanation = new Button("教室概要");
 
 		// 教室選択用ボックスの生成
@@ -39,7 +40,7 @@ public class MainFrame extends Frame implements ActionListener, WindowListener{
 		// 上部パネルの上パネルに予約システムというラベルと【ログイン】ボタンを追加
 		panelNorthSub1 = new Panel();
 		panelNorthSub1.add(new Label("教室予約システム"));
-		panelNorthSub1.add(buttonLog);
+		panelNorthSub1.add(buttonLogin);
 		panelNorthSub1.add(new Label("		ログインID"));
 		panelNorthSub1.add(tfLoginID);
 
@@ -55,13 +56,6 @@ public class MainFrame extends Frame implements ActionListener, WindowListener{
 		panelNorth.add(panelNorthSub1, BorderLayout.NORTH);
 		panelNorth.add(panelNorthSub2, BorderLayout.CENTER);
 
-		panelNorth = new Panel();
-		panelNorth.add(new Label("教室予約システム"));
-		panelNorth.add(buttonLog);
-		panelNorth.add(new Label("		ログインID"));
-		panelNorth.add(tfLoginID);
-
-
 		add(panelNorth,BorderLayout.NORTH);
 
 		panelCenter = new Panel();
@@ -71,7 +65,8 @@ public class MainFrame extends Frame implements ActionListener, WindowListener{
 
 		add(panelCenter, BorderLayout.CENTER);
 
-		buttonLog.addActionListener(this);
+		buttonLogin.addActionListener(this);
+		buttonExplanation.addActionListener(this);
 		addWindowListener(this);
 	}
 
@@ -114,8 +109,12 @@ public class MainFrame extends Frame implements ActionListener, WindowListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String result = new String();
-		if(e.getSource() == buttonLog) {
+		// ログインボタン
+		if(e.getSource() == buttonLogin) {
 			result = reservationControl.loginLogout(this);
+		// 教室概要ボタン
+		} else if(e.getSource() == buttonExplanation) {
+			result = reservationControl.getFacilityExplanation(choiceFacility.getSelectedItem());
 		}
 		textMessage.setText(result);
 	}
