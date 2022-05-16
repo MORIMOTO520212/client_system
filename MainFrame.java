@@ -12,9 +12,12 @@ public class MainFrame extends Frame implements ActionListener, WindowListener{
 	Panel	panelCenter;
 	// ボタンインスタンスの生成
 	Button	buttonLog;
-
+	Button  buttonExplanation;
+	// 選択ボックスのインスタンス生成
+	ChoiceFacility choiceFacility;
+	// テキストフィールドのインスタンス生成
 	TextField	tfLoginID;
-
+	// テキストエリアのインスタンス生成
 	TextArea	textMessage;
 
 
@@ -22,13 +25,35 @@ public class MainFrame extends Frame implements ActionListener, WindowListener{
 		reservationControl = rc;
 
 		buttonLog = new Button("ログイン");
+		buttonExplanation = new Button("教室概要");
 
+		// 教室選択用ボックスの生成
+		choiceFacility = new ChoiceFacility();
 
 		tfLoginID = new TextField("未ログイン");
 		tfLoginID.setEditable(false);
 
 
 		setLayout(new BorderLayout());
+
+		// 上部パネルの上パネルに予約システムというラベルと【ログイン】ボタンを追加
+		panelNorthSub1 = new Panel();
+		panelNorthSub1.add(new Label("教室予約システム"));
+		panelNorthSub1.add(buttonLog);
+		panelNorthSub1.add(new Label("		ログインID"));
+		panelNorthSub1.add(tfLoginID);
+
+		// 上部パネルの中央パネルに教室チョイス及び教室概要ボタンを追加
+		panelNorthSub2 = new Panel();
+		panelNorthSub2.add(new Label("教室　"));
+		panelNorthSub2.add(choiceFacility);
+		panelNorthSub2.add(new Label("　"));
+		panelNorthSub2.add(buttonExplanation);
+
+		// 上部パネルに2つのパネルを追加
+		panelNorth = new Panel(new BorderLayout());
+		panelNorth.add(panelNorthSub1, BorderLayout.NORTH);
+		panelNorth.add(panelNorthSub2, BorderLayout.CENTER);
 
 		panelNorth = new Panel();
 		panelNorth.add(new Label("教室予約システム"));
