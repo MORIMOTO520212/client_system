@@ -7,8 +7,8 @@ public class ReservationControl {
 	//MySQLに接続するためのデータ
 	Connection sqlCon;
 	Statement sqlStmt;
-	String sqlUserID   = "puser"; // ユーザー名
-	String sqlPassword = "1234";  // パスワード
+	String sqlUserID   = "root"; // ユーザー名
+	String sqlPassword = "";  // パスワード
 
 	// 予約システムのユーザID及びLogin状態
 	String reservationUserID;
@@ -25,7 +25,7 @@ public class ReservationControl {
 		try {
 			Class.forName("org.gjt.mm.mysql.Driver"); // MySQLのドライバをLoadする
 			// MySQLに接続
-			String url = "jdbc.mysql://localhost?useUnicode=true&characterEncoding=SJIS";
+			String url = "jdbc:mysql://localhost?useUnicode=true&characterEncoding=SJIS";
 			sqlCon = DriverManager.getConnection (url, sqlUserID, sqlPassword);
 			sqlStmt = sqlCon.createStatement();
 		// 例外発生時
